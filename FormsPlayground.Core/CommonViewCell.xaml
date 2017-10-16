@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:abstractions="clr-namespace:CachedImageCircle.Forms.Plugin.Abstractions;assembly=CachedImageCircle.Forms.Plugin.Abstractions"
+             x:Class="FormsPlayground.Core.CommonViewCell">
+  <ContentView.Content>
+      <StackLayout Orientation="Horizontal">
+          <Grid Margin="10,0,0,0">
+              <abstractions:CircleCachedImage Source="{Binding ImageName, Mode=OneWay}"
+                                              HeightRequest="60"
+                                              HorizontalOptions="Center"
+                                              VerticalOptions="Center"
+                                              Aspect="AspectFill"
+                                              WidthRequest="60" x:Name="ImageEntityView" />
+
+              <Label Text="{Binding Initials, Mode=OneWay}" x:Name="InitialsView"
+                     VerticalOptions="Center" HorizontalOptions="Center"
+                     FontSize="20"
+                     FontAttributes="None" TextColor="White" IsVisible="{Binding HasInitials, Mode=OneWay}"
+              />
+          </Grid>
+          <StackLayout Orientation="Vertical" Margin="10,0,0,0" VerticalOptions="Center">
+              <Label Text="{Binding ListPrimary, Mode=OneWay}" FontSize="18" x:Name="ListPrimaryView" />
+              <Label Text="{Binding ListSecondary, Mode=OneWay}" FontSize="14" x:Name="ListSecondaryView" />
+          </StackLayout>
+      </StackLayout>
+    </ContentView.Content>
+</ContentView>

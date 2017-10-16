@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="FormsPlayground.Core.MainPage">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#555555">
+            <Label Text="Welcome to Xamarin.Forms Playground!" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" FontSize="Medium" TextColor="White" Margin="0, 30, 0, 0" />
+            <Button Text="LisView Normal" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" 
+                    Margin="0, 100, 0, 10" WidthRequest="200" x:Name="ListViewButton" Clicked="ListViewButton_Clicked"  TextColor="Black"
+                     BackgroundColor="LightGray" />
+
+            <Button Text="LisView FastCell" VerticalOptions="Start" HorizontalOptions="CenterAndExpand" 
+                    Margin="0, 100, 0, 10" WidthRequest="200" x:Name="FastListViewButton" Clicked="FastListViewButton_OnClickedListViewButton_Clicked"  TextColor="Black"
+                    BackgroundColor="LightGray" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

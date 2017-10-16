@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:controls="clr-namespace:FormsPlayground.Core.Controls;assembly=FormsPlayground.Core"
+             xmlns:circleImage="clr-namespace:CachedImageCircle.Forms.Plugin.Abstractions;assembly=CachedImageCircle.Forms.Plugin.Abstractions"
+             xmlns:core="clr-namespace:FormsPlayground.Core;assembly=FormsPlayground.Core"
+
+             x:Class="FormsPlayground.Core.ListViewPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <SearchBar Text="Search among entities" HorizontalOptions="Fill" 
+                   FontSize="13"></SearchBar>
+
+        <ListView ItemsSource="{Binding Items}"
+            CachingStrategy="RecycleElement" Grid.Row="1" HasUnevenRows="False" RowHeight="70">
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <core:ListViewCell />
+                </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+
+    </Grid>
+
+</ContentPage>

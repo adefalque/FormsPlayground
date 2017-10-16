@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<controls:FastCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:controls="clr-namespace:FormsPlayground.Core.Controls;assembly=FormsPlayground.Core"             
+             xmlns:core="clr-namespace:FormsPlayground.Core;assembly=FormsPlayground.Core"
+             x:Class="FormsPlayground.Core.FastListViewCell">
+    <core:CommonViewCell />
+</controls:FastCell>

@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:core="clr-namespace:FormsPlayground.Core;assembly=FormsPlayground.Core"
+             x:Class="FormsPlayground.Core.FastListViewPage">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <SearchBar Text="Search among entities" HorizontalOptions="Fill" 
+                   FontSize="13"></SearchBar>
+
+        <ListView ItemsSource="{Binding Items}"
+                  CachingStrategy="RecycleElement" Grid.Row="1" HasUnevenRows="False" RowHeight="70">
+
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <core:FastListViewCell />
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+    </Grid>
+</ContentPage>
