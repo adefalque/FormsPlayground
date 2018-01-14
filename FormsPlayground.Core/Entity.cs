@@ -4,10 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FormsPlayground.Core.Extensions;
+using Realms;
+using Realms.Exceptions;
 
 namespace FormsPlayground.Core
 {
-    public class Entity
+    public class Entity : RealmObject
     {
         public int ID { get; set; }
 

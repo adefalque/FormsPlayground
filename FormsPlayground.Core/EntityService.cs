@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Realms;
 
 namespace FormsPlayground.Core
 {
@@ -15,26 +16,45 @@ namespace FormsPlayground.Core
 
         public ObservableCollection<Entity> GetSampleEntities()
         {
-            var random = new Random();
+            var realm = Realm.GetInstance();
 
-            var items = new List<Entity>();
-            for (int i = 0; i < 1000; i++)
+            //realm.Write(() =>
+            //{
+            //    realm.RemoveAll<Entity>();
+            //});
+
+            var entities = realm.All<Entity>().ToList();
+
+            if (entities.Count == 0)
             {
-                var entity = new Entity()
+                var random = new Random();
+
+                var items = new List<Entity>();
+                for (int i = 0; i < 20000; i++)
                 {
-                    ID = i,
-                    ListPrimary = $"{randomFirst[random.Next(0, 5)]} {randomLast[random.Next(0, 5)]}",
-                    ListSecondary = $"{randomCompany[random.Next(0, 5)]}",
-                };
+                    realm.Write(() =>
+                    {
+                        var entity = new Entity()
+                        {
+                            ID = i,
+                            ListPrimary = $"{randomFirst[random.Next(0, 5)]} {randomLast[random.Next(0, 5)]}",
+                            ListSecondary = $"{randomCompany[random.Next(0, 5)]}",
+                        };
 
-                var iRandomImage = random.Next(0, 17);
+                        var iRandomImage = random.Next(0, 17);
 
-                entity.ImageName = iRandomImage == 0 ? "EntityDefaultImage.png" : $"img{iRandomImage}";
+                        entity.ImageName = iRandomImage == 0 ? "EntityDefaultImage.png" : $"img{iRandomImage}";
 
-                items.Add(entity);
+                        realm.Add(entity);
+
+                        items.Add(entity);
+                    });
+                }
+
+                entities = items; //.AsQueryable();
             }
 
-            return new ObservableCollection<Entity>(items);
+            return new ObservableCollection<Entity>(entities);
         }
     }
 }

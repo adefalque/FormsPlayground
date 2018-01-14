@@ -2,16 +2,23 @@
 <ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:abstractions="clr-namespace:CachedImageCircle.Forms.Plugin.Abstractions;assembly=CachedImageCircle.Forms.Plugin.Abstractions"
+             xmlns:ffi="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              x:Class="FormsPlayground.Core.CommonViewCell">
   <ContentView.Content>
       <StackLayout Orientation="Horizontal">
           <Grid Margin="10,0,0,0">
-              <abstractions:CircleCachedImage Source="{Binding ImageName, Mode=OneWay}"
-                                              HeightRequest="60"
-                                              HorizontalOptions="Center"
-                                              VerticalOptions="Center"
-                                              Aspect="AspectFill"
-                                              WidthRequest="60" x:Name="ImageEntityView" />
+
+                <ffi:CachedImage  Source="{Binding ImageName, Mode=OneWay}"
+                                  HeightRequest="60"
+                                  HorizontalOptions="Center"
+                                  VerticalOptions="Center"
+                                  Aspect="AspectFill"
+                                  WidthRequest="60" x:Name="ImageEntityView" FadeAnimationEnabled="True" LoadingDelay="200">
+                  <ffi:CachedImage.Transformations>
+                      <transformations:CircleTransformation />
+                  </ffi:CachedImage.Transformations>
+              </ffi:CachedImage> 
 
               <Label Text="{Binding Initials, Mode=OneWay}" x:Name="InitialsView"
                      VerticalOptions="Center" HorizontalOptions="Center"
